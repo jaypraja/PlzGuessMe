@@ -1,0 +1,59 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df=pd.read_excel("/content/RelianceDataMart (1).xlsx")
+df.head()
+
+df.describe().T
+
+from scipy import stats
+
+one_sample_result= stats.ttest_1samp(df , 24.235)
+
+one_sample_result
+
+pre_post_score=pd.read_excel("/content/Pre_Post_Score (1).xlsx")
+pre_post_score
+
+col_to_drop = ['Unnamed: 3' , 'Unnamed: 4' , 'Unnamed: 5' ,␣
+↪ 'Unnamed: 6']
+
+pre_post_score.drop(columns=col_to_drop , inplace =True)
+
+pre_post_score
+
+pre_post_score.dropna(inplace=True)
+
+pre_post_score
+
+two_sample_result=stats.ttest_rel(pre_post_score["Pre_Score"] ,␣
+↪pre_post_score["Post_Score"])
+
+two_sample_result
+
+crocin_data = pd.read_excel("/content/Crocin_Data_ST (1).xlsx")
+
+crocin_data
+
+col_to_drop = ['Unnamed: 3' , 'Unnamed: 4' , 'Unnamed: 5']
+
+crocin_data.drop(columns=col_to_drop , inplace =True)
+
+crocin_data
+
+crocin_data.dropna(inplace=True)
+
+crocin_data
+
+two_sample_result = stats.ttest_rel(crocin_data["Before_Crocin"] ,␣
+↪crocin_data["After_Crocin"])
+
+two_sample_result
+
+
+
+
+
+
